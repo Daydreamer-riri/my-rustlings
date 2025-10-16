@@ -3,3 +3,7 @@
 fn main() {
     call_me(); // 不要修改这一行代码。
 }
+
+fn call_me() {
+    println!("You called me!");
+}
