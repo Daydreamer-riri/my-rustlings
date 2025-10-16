@@ -4,7 +4,7 @@ fn main() {
 
     println!("Number {x}");
 
-    let y;
+    let y = 20;
 
     println!("Number {y}");
 }
