@@ -1,6 +1,6 @@
 // TODO: 在不改变函数签名的前提下，修复编译器错误。
 fn current_favorite_color() -> String {
-    "blue"
+    String::from("blue")
 }
 
 fn main() {
