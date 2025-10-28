@@ -1,9 +1,9 @@
 // 我们正在收集不同的水果来烘焙一个美味的水果蛋糕。
 // 为此，我们有一个篮子，将以哈希表的形式来表示它。
 // 键代表我们收集的每种水果的名称，值代表我们收集的该特定水果的数量。
-// 篮子中已经有三种水果: 
+// 篮子中已经有三种水果:
 // 苹果(4个)、芒果(2个)和荔枝(5个)。
-// 你必须向篮子中添加水果，使得每种水果至少有一个，并且总数超过11个 - 
+// 你必须向篮子中添加水果，使得每种水果至少有一个，并且总数超过11个 -
 // 我们要照顾到更多人的口味，因此不允许再插入篮子中已有的水果(苹果、芒果和荔枝)。
 
 use std::collections::HashMap;
@@ -29,11 +29,18 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
     for fruit in fruit_kinds {
         // TODO: 如果新水果不在篮子中，则插入它们。
         // 注意，不允许放入任何已经存在的水果类型！
+        basket.entry(fruit).or_insert(1);
     }
 }
 
 fn main() {
     // (可选)你可以选择性地在此处进行试验。
+    let mut basket = HashMap::new();
+    basket.insert(Fruit::Apple, 4);
+    basket.insert(Fruit::Mango, 2);
+    basket.insert(Fruit::Lychee, 5);
+    fruit_basket(&mut basket);
+    println!("{:?}", basket);
 }
 
 #[cfg(test)]

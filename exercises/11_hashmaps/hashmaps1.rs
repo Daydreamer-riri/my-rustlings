@@ -7,18 +7,22 @@ use std::collections::HashMap;
 
 fn fruit_basket() -> HashMap<String, u32> {
     // TODO: 声明哈希表。
-    // let mut basket =
+    let mut basket = HashMap::new();
 
     // 已经给你准备好了两根香蕉 :)
     basket.insert(String::from("banana"), 2);
 
     // TODO: 在你的水果篮中添加更多的水果。
+    basket.insert(String::from("apple"), 1);
+    basket.insert(String::from("mango"), 2);
 
     basket
 }
 
 fn main() {
     // (可选)你可以选择性地在此处进行试验。
+    let basket = fruit_basket();
+    println!("{:?}", basket);
 }
 
 #[cfg(test)]
