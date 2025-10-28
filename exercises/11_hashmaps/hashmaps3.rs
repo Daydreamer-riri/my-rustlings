@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 // 已知一场足球比赛的比分列表(每行一个比分)。
 // 每行的格式为 "<球队1名称>, <球队2名称>, <球队1进球数>, <球队2进球数>"
 // 例如: "英格兰, 法国, 4, 2"(英格兰进了4个球，法国进了2个球)。
@@ -27,6 +28,13 @@ fn build_scores_table(results: &str) -> HashMap<&str, TeamScores> {
 
         // TODO: 使用提取出的详细信息来填充比分表。
         // 切记，球队1的进球数将是球队2的失球数。同样，球队2的进球数将是球队1的失球数。
+        let team_1_entry = scores.entry(team_1_name).or_default();
+        team_1_entry.goals_scored += team_1_score;
+        team_1_entry.goals_conceded += team_2_score;
+
+        let team_2_entry = scores.entry(team_2_name).or_default();
+        team_2_entry.goals_scored += team_2_score;
+        team_2_entry.goals_conceded += team_1_score;
     }
 
     scores

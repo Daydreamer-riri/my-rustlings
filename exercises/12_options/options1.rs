@@ -4,10 +4,20 @@
 // 如果 `hour_of_day` 大于23，则返回 `None`。
 fn maybe_icecream(hour_of_day: u16) -> Option<u16> {
     // TODO: 完成函数体。
+    match hour_of_day {
+        0..=21 => Some(5),
+        22..=23 => Some(0),
+        _ => None,
+    }
 }
 
 fn main() {
     // (可选)你可以选择性地在此处进行试验。
+    let icecreams = maybe_icecream(22);
+    match icecreams {
+        Some(scoops) => println!("剩余冰淇淋勺数: {}", scoops),
+        None => println!("没有冰淇淋了！"),
+    }
 }
 
 #[cfg(test)]
@@ -17,7 +27,7 @@ mod tests {
     #[test]
     fn raw_value() {
         // TODO: 修复此测试。如何获取 `Option` 中包含的值？
-        let icecreams = maybe_icecream(12);
+        let icecreams = maybe_icecream(12).unwrap_or_default();
 
         assert_eq!(icecreams, 5); // 不要修改此行代码。
     }
