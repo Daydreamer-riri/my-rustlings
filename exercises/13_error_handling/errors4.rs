@@ -1,3 +1,6 @@
+#![allow(dead_code)]
+use std::cmp::Ordering;
+
 #[derive(PartialEq, Debug)]
 enum CreationError {
     Negative,
@@ -11,7 +14,11 @@ impl PositiveNonzeroInteger {
     fn new(value: i64) -> Result<Self, CreationError> {
         // TODO: 此函数不应该总是返回 `Ok`.
         // 阅读下面的测试用例以明确应返回的内容。
-        Ok(Self(value as u64))
+        match value.cmp(&0) {
+            Ordering::Less => Err(CreationError::Negative),
+            Ordering::Equal => Err(CreationError::Zero),
+            Ordering::Greater => Ok(Self(value as u64)),
+        }
     }
 }
 
